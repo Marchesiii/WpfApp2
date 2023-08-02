@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <Label Content="Biblioteca" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="26" Width="62"/>
+        <ListView x:Name="list_listable" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,0,0" SelectedItem="{Binding ItemSelecionado}" ItemsSource="{Binding ListaListable}" Height="100">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Codigo" DisplayMemberBinding="{Binding Path=Codigo}"/>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Path=Nome}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ComboBox SelectedItem="{Binding TipoSelecionado}" x:Name="cmb_type" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged" Height="22">
+            <local:TipoItem>Pessoa</local:TipoItem>
+            <local:TipoItem>Livro</local:TipoItem>
+        </ComboBox>
+        <Button Command="{Binding Add}" Content="Incluir" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="20" Width="36"/>
+        <Button Command="{Binding Remove}" Content="Remover" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="20" Width="51"/>
+        <Button Command="{Binding Update}" Content="Alterar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="20" Width="39" />
+        <Button Command="{Binding Emprestar}" Content="Emprestar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="20" Width="57"/>
+        <Button Command="{Binding Devolver}" Content="Devolver" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="20" Width="51"/>
+        <Button Command="{Binding Info}" Content="Informacoes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+    </StackPanel>
+</Window>
